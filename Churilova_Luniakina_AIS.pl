@@ -216,17 +216,15 @@ actors_age_of_film(Movie,Actors_age):- movie(Movie, _, _, _, Id_filmCrew, _), fi
 % В яких фільмах знімався даний актор
 % films_of_actor(+прізвище актора,-фільми). ??????????????????
 
-films_of_actor(Surname, Movie):- worker(ID_actor, _, pib(_,Surname,_), _, _, _, _, _, _), worker_filmCrew(filmCrew_number, ID_actor, _), movie(Movie, _, _, _, filmCrew_number, _).
-
-
-
-
+films_of_actor(Surname, Movie):- worker(ID_actor, _, pib(_,Surname,_), _, _, _, _, _, _), 
+                                 worker_filmCrew(filmCrew_number, ID_actor, _), movie(Movie, _, _, _, filmCrew_number, _).
 
 
 
 % Дата народження монтажера, який був задіяний в заданому фільмі
 % editor_birth_date_of_film(+назва фільму,-дата народження).
-
+editor_birth_date_of_film(Movie, BirtDate) :- movie(Movie, _, _, _, _, Id_editCrew), editCrew(Id_editCrew, _, _),
+                                              editor_editCrew(Id_editCrew, Id_editor, _), editor(Id_editor, _, _, _, _, _, BirtDate).
 
 
 % Запит з сумуванням числових даних по стовпчику таблиці чи її частини
