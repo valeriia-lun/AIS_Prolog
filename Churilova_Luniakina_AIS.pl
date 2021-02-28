@@ -81,29 +81,51 @@ filmCrew(3, date(2018-06-23), date(2019-02-11)).
 filmCrew(4, date(2017-02-01), date(2017-06-02)).
 
 %Звязуюча таблиця спіробітник знімальної групи та знімальна група. worker_filmCrew(номер_знімальної_групи(PPK, FK), табельний_номер_співробітника(PPK, FK), гонорар)
-worker_filmCrew(1, _, 231000).
-worker_filmCrew(1, _, 18900).
-worker_filmCrew(1, _, 321000).
-worker_filmCrew(1, _, 32400).
-worker_filmCrew(1, _, 120000).
-worker_filmCrew(1, _, 231200).
+worker_filmCrew(1, 5, 231000).
+worker_filmCrew(1, 6, 18900).
+worker_filmCrew(1, 8, 321000).
+worker_filmCrew(1, 11, 32400).
+worker_filmCrew(1, 14, 120000).
+worker_filmCrew(1, 15, 231200).
+worker_filmCrew(1, 18, 23899).
+worker_filmCrew(1, 20, 189000).
+worker_filmCrew(1, 21, 35839).
+worker_filmCrew(1, 23, 378590).
+worker_filmCrew(1, 29, 34324).
+worker_filmCrew(1, 31, 180000).
+worker_filmCrew(1, 34, 87000).
+worker_filmCrew(1, 36, 378000).
+worker_filmCrew(1, 38, 489200).
+worker_filmCrew(1, 39, 127894).
 
-worker_filmCrew(2, _, 123489).
-worker_filmCrew(2, _, 12000).
-worker_filmCrew(2, _, 232100).
-worker_filmCrew(2, _, 231980).
-worker_filmCrew(2, _, 23111).
-worker_filmCrew(2, _, 28999).
-worker_filmCrew(2, _, 87000).
+worker_filmCrew(2, 10, 123489).
+worker_filmCrew(2, 9, 12000).
+worker_filmCrew(2, 4, 232100).
+worker_filmCrew(2, 5, 231980).
+worker_filmCrew(2, 12, 23111).
+worker_filmCrew(2, 14, 28999).
+worker_filmCrew(2, 15, 87000).
+worker_filmCrew(2, 18, 238499).
+worker_filmCrew(2, 19, 34899).
+worker_filmCrew(2, 22, 89000).
+worker_filmCrew(2, 24, 543000).
+worker_filmCrew(2, 26, 76900).
+worker_filmCrew(2, 27, 678400).
+worker_filmCrew(2, 30, 123000).
+worker_filmCrew(2, 32, 12000).
+worker_filmCrew(2, 33, 560990).
+worker_filmCrew(2, 36, 85500).
+worker_filmCrew(2, 37, 120000).
+worker_filmCrew(2, 39, 310000).
 
-worker_filmCrew(3, _, 143334).
-worker_filmCrew(3, _, 879330).
+worker_filmCrew(3, 1, 143334).
+worker_filmCrew(3, 3, 879330).
 worker_filmCrew(3, _, 45888).
 worker_filmCrew(3, _, 129900).
 
-worker_filmCrew(4, _, 12000).
-worker_filmCrew(4, _, 76400).
-worker_filmCrew(4, _, 123000).
+worker_filmCrew(4, 8, 12000).
+worker_filmCrew(4, 7, 76400).
+worker_filmCrew(4, 3, 123000).
 worker_filmCrew(4, _, 358800).
 worker_filmCrew(4, _, 348820).
 
