@@ -248,6 +248,21 @@ avr_salary_of_actors(Film_name, Salary) :-  salary_of_all_actors_in_film_list(Fi
 % those_editors(+прізвище актора,-піб монтажерів).
 
 
+
+
+
+
+
+
+actor_film(Actor_Id, Film):-  worker(Actor_Id, _, _, _, _, _, _,"actor", _), worker_filmCrew(Id_filmCrew, Actor_Id, _), movie(Film, _, _, _, Id_filmCrew, _).
+
+atLeastOneSet(Ids, Editor_Surname, Actor_Surname) :- worker(Actor_Id, _, pib(_,Actor_Surname,_), _, _, _, _,"actor", _), actor_film(Actor_Id, Film_names),
+                                                     movie(Film_names, _, _, _, _, Id_editCrew), editor_editCrew(Id_editCrew, Ids, _), editor(Ids, _, Editor_Surname, _, _, _, _).
+
+those_editors(Actor_surname, Editor_PIB) :- setof((Ids, Surn), atLeastOneSet(Ids, Surn, Actor_surname), Editor_PIB).
+
+
+
 % ii. «тільки ті» (хоча б один, а інші ні).
 % Які актори (ПІБ) знімались тільки в тих фільмах, які вийшли в заданому році?
 % only_those_actots(+рік,-ПІБ акторів).
@@ -261,6 +276,7 @@ avr_salary_of_actors(Film_name, Salary) :-  salary_of_all_actors_in_film_list(Fi
 % Жанри фільмів (назва жанру), які знімав заданий режисер? (Задане прізвище режисера)
 % all_and_only_films(+прізвище режисера,-жанри).
 
+
 % Визначити принаймні два оператори
 % Усі актори фільму "The First Star" (ПІБ акторів)
 % all_actors_of_the_first_star().
@@ -271,5 +287,3 @@ all_actors_of_the_first_star :- movie("The First Star", _, _, _, Id_filmCrew, _)
 % all_directors_of_drama().
 all_directors_of_drama :- genres(Id_genre, "Drama"), genres_movies(Movie, Id_genre), movie(Movie, _, _, _, Id_filmCrew, _), 
                           worker_filmCrew(Id_filmCrew, Id_director, _), worker(Id_director, _, PIB, _, _, _, _, "director", _), write(PIB).
-
-
