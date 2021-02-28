@@ -218,6 +218,13 @@ actors_age_of_film(Movie,Actors_age):- movie(Movie, _, _, _, Id_filmCrew, _), fi
 
 films_of_actor(Surname, Movie):- worker(Id_actor, _, pib(_,Surname,_), _, _, _, _, _, _), 
                                  worker_filmCrew(FilmCrew_number, Id_actor, _), movie(Movie, _, _, _, FilmCrew_number, _).
+% Приклади: 
+%
+% ?- films_of_actor("Leonov", Movie).    
+% Відповідь: Movie = "The Old Mill".
+%
+% ?- films_of_actor("Makarenko", Movie).
+% Відповідь: Movie = "See you tomorrow".
 
 
 
@@ -240,9 +247,21 @@ avrg(X, Avrg) :- sum(X, Res), length(X, Amount), Avrg is Res / Amount.
 
 avr_salary_of_actors(Film_name, Salary) :-  salary_of_all_actors_in_film_list(Film_name, Sal), avrg(Sal, Res), Salary is Res.
 
+% Приклади: 
+%
+% ?- avr_salary_of_actors("The First Star", X).   
+% Відповідь: X = 28333.333333333332.
+%
+% ?- avr_salary_of_actors("Candy Bar", X).
+% Відповідь: X = 28000.
+
+
+
+
+
 % Мають бути запити (правила-запити) типу:
 % i. «ті» (принаймні один та можливо і інші).
-% Які монтажери (ПІБ) брав участь у монжажу хоча б одного фільму, в якому знімався заданий актор? (Задане прізвище актора)
+% Які монтажери (табельний номер монтажера, ПІБ) брав участь у монжажу хоча б одного фільму, в якому знімався заданий актор? (Задане прізвище актора)
 % those_editors(+прізвище актора,-піб монтажерів).
 
 actor_film(Actor_Id, Film):-  worker(Actor_Id, _, _, _, _, _, _,"actor", _), worker_filmCrew(Id_filmCrew, Actor_Id, _), movie(Film, _, _, _, Id_filmCrew, _).
@@ -251,6 +270,16 @@ atLeastOneSet(Ids, Editor_Surname, Actor_Surname) :- worker(Actor_Id, _, pib(_,A
                                                      movie(Film_names, _, _, _, _, Id_editCrew), editor_editCrew(Id_editCrew, Ids, _), editor(Ids, _, Editor_Surname, _, _, _, _).
 
 those_editors(Actor_surname, Editor_PIB) :- setof((Ids, Surn), atLeastOneSet(Ids, Surn, Actor_surname), Editor_PIB).
+
+% Приклади: 
+%
+% ?- those_editors("Maksymenko",X).  
+% Відповідь: X = [(1, pib("Tom", "Smith", "Edisson")),  (2, pib("Jack", "Green", "Apple")),  (4, pib("Ann", "Brown", "Wo")),  (5, pib("Daniel", "Whitw", "Carlos")),  (7, pib("Max", "Harmon", "Winny"))].
+%
+% ?- those_editors("Prokhorov",X).
+% Відповідь: X = [(1, pib("Tom", "Smith", "Edisson")),  (2, pib("Jack", "Green", "Apple")),  (4, pib("Ann", "Brown", "Wo"))].
+
+
 
 
 
@@ -266,10 +295,21 @@ badActorsOnly(Year, Actors_id) :- films_not_the_year(Year, Films), movie(Films, 
 
 onlyInMoviesSet(Actors_id, Actor_PIB, Year):- atLeastOneSetActors(Actors_id, Actor_PIB, Year), not(badActorsOnly(Year, Actors_id)).
 
-atLeastOneSetActors(Actors_id, Actor_PIB, Year) :- movie(Film_names, date(Year,_,_), _, _, _, Id_filmCrew),
+atLeastOneSetActors(Actors_id, Actor_PIB, Year) :- movie(_, date(Year,_,_), _, _, _, Id_filmCrew),
                        worker_filmCrew(Id_filmCrew, Actors_id, _), worker(Actors_id, _, Actor_PIB, _, _, _, _,"actor", _).
 
-only_those_actots(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Surname,Year), Actor_PIB).
+only_those_actors(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Surname,Year), Actor_PIB).
+
+% Приклади: 
+%
+% ?- only_those_actors(2019,X).
+% Відповідь: X = [(1, pib("Sofiya", "Makarenko", "Olegivna")),  (3, pib("Oleg", "Maksymenko", "Volodymyrovych")),  (5, pib("Vera", "Badun", "Sergiivna")),  (6, pib("Valerie", "Nikulchenko", "Andriivna")),  (8, pib("Roman", "Falyush", "Dmytrovych"))].
+%
+% ?- only_those_actors(2020,X).
+% Відповідь: X = [(5, pib("Vera", "Badun", "Sergiivna")),  (6, pib("Valerie", "Nikulchenko", "Andriivna")),  (8, pib("Roman", "Falyush", "Dmytrovych"))].
+
+
+
 
 
 % iii. «усі ті», можливо і інші.
@@ -278,17 +318,19 @@ only_those_actots(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Su
 
 badScreenwriters(Screenwriter_id, Director_Surname):- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
                             worker_filmCrew(Id_filmCrew, Director_Id, _), movie(Film_name, _, _, _, Id_filmCrew, _),
-                            worker(Screenwriter_Id, _, _, _, _, _, _,"screenwriter", _), worker_filmCrew(Ids_filmCrew, Screenwriter_id, _),
+                            worker(Screenwriter_id, _, _, _, _, _, _,"screenwriter", _), worker_filmCrew(Ids_filmCrew, Screenwriter_id, _),
                             not(movie(Film_name, _, _, _, Ids_filmCrew, _)).
 
-all_screenwriters(Director_Surname, Screenwriter_PIB) :- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
+all_screenwriters(Director_Surname, Screenwriter_PIB) :- worker(_, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
                              worker(Screenwriter_Id, _, Screenwriter_PIB, _, _, _, _,"screenwriter", _),
                              not(badScreenwriters(Screenwriter_Id, Director_Surname)).
+
 
 
 % iv. «усі ті та тільки ті».
 % Жанри фільмів (назва жанру), які знімав заданий режисер? (Задане прізвище режисера)
 % all_and_only_films(+прізвище режисера,-жанри).
+
 
 
 % Визначити принаймні два оператори
@@ -301,3 +343,6 @@ all_actors_of_the_first_star :- movie("The First Star", _, _, _, Id_filmCrew, _)
 % all_directors_of_drama().
 all_directors_of_drama :- genres(Id_genre, "Drama"), genres_movies(Movie, Id_genre), movie(Movie, _, _, _, Id_filmCrew, _), 
                           worker_filmCrew(Id_filmCrew, Id_director, _), worker(Id_director, _, PIB, _, _, _, _, "director", _), write(PIB).
+
+
+
