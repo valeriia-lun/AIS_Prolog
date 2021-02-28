@@ -214,7 +214,7 @@ actors_age_of_film(Movie,Actors_age):- movie(Movie, _, _, _, Id_filmCrew, _), fi
 
 
 % В яких фільмах знімався даний актор
-% films_of_actor(+прізвище актора,-фільми). ??????????????????
+% films_of_actor(+прізвище актора,-фільми).
 
 films_of_actor(Surname, Movie):- worker(Id_actor, _, pib(_,Surname,_), _, _, _, _, _, _), 
                                  worker_filmCrew(FilmCrew_number, Id_actor, _), movie(Movie, _, _, _, FilmCrew_number, _).
@@ -247,13 +247,6 @@ avr_salary_of_actors(Film_name, Salary) :-  salary_of_all_actors_in_film_list(Fi
 % Які монтажери (ПІБ) брав участь у монжажу хоча б одного фільму, в якому знімався заданий актор? (Задане прізвище актора)
 % those_editors(+прізвище актора,-піб монтажерів).
 
-
-
-
-
-
-
-
 actor_film(Actor_Id, Film):-  worker(Actor_Id, _, _, _, _, _, _,"actor", _), worker_filmCrew(Id_filmCrew, Actor_Id, _), movie(Film, _, _, _, Id_filmCrew, _).
 
 atLeastOneSet(Ids, Editor_Surname, Actor_Surname) :- worker(Actor_Id, _, pib(_,Actor_Surname,_), _, _, _, _,"actor", _), actor_film(Actor_Id, Film_names),
@@ -263,13 +256,36 @@ those_editors(Actor_surname, Editor_PIB) :- setof((Ids, Surn), atLeastOneSet(Ids
 
 
 
+
 % ii. «тільки ті» (хоча б один, а інші ні).
 % Які актори (ПІБ) знімались тільки в тих фільмах, які вийшли в заданому році?
 % only_those_actots(+рік,-ПІБ акторів).
 
+
+films_not_the_year(Year, Films) :- not(movie(Films, date(Year,_,_), _, _, _, _)).
+
+badActorsOnly(Year, Actors_id) :- films_not_the_year(Year, Films), movie(Films, _, _, _, Id_filmCrew,_), worker(Actors_id, _, _, _, _, _, _,"actor", _), worker_filmCrew(Id_filmCrew, Actors_id, _).
+
+onlyInMoviesSet(Actors_id, Actor_PIB, Year):- atLeastOneSetActors(Actors_id, Actor_PIB, Year), not(badActorsOnly(Year, Actors_id)).
+
+atLeastOneSetActors(Actors_id, Actor_PIB, Year) :- movie(Film_names, date(Year,_,_), _, _, _, Id_filmCrew),
+											 worker_filmCrew(Id_filmCrew, Actors_id, _), worker(Actors_id, _, Actor_PIB, _, _, _, _,"actor", _).
+
+only_those_actots(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Surname,Year), Actor_PIB).
+
+
 % iii. «усі ті», можливо і інші.
 % Які сценаристи (ПІБ) писали сценарій для всіх фільмів заданого режисера? (Задане прізвище режисера)
 % all_screenwriters(+прізвище режисера,-ПІБ сценариста).
+
+badScreenwriters(Screenwriter_id, Director_Surname):- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
+													  worker_filmCrew(Id_filmCrew, Director_Id, _), movie(Film_name, _, _, _, Id_filmCrew, _),
+													  worker(Screenwriter_Id, _, _, _, _, _, _,"screenwriter", _), worker_filmCrew(Ids_filmCrew, Screenwriter_id, _),
+													  not(movie(Film_name, _, _, _, Ids_filmCrew, _)).
+
+all_screenwriters(Director_Surname, Screenwriter_PIB) :- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
+														 worker(Screenwriter_Id, _, Screenwriter_PIB, _, _, _, _,"screenwriter", _),
+														 not(badScreenwriters(Screenwriter_Id, Director_Surname)).
 
 
 % iv. «усі ті та тільки ті».
