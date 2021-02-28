@@ -261,5 +261,7 @@ all_actors_of_the_first_star :- movie("The First Star", _, _, _, Id_filmCrew, _)
 
 % Усі режисери, які знімали драми (ПІБ режисерів)
 % all_directors_of_drama().
+all_directors_of_drama :- genres(Id_genre, "Drama"), genres_movies(Movie, Id_genre), movie(Movie, _, _, _, Id_filmCrew, _), 
+                          worker_filmCrew(Id_filmCrew, Id_director, _), worker(Id_director, _, PIB, _, _, _, _, "director", _), write(PIB).
 
 
