@@ -240,8 +240,6 @@ avrg(X, Avrg) :- sum(X, Res), length(X, Amount), Avrg is Res / Amount.
 
 avr_salary_of_actors(Film_name, Salary) :-  salary_of_all_actors_in_film_list(Film_name, Sal), avrg(Sal, Res), Salary is Res.
 
-   
-
 % Мають бути запити (правила-запити) типу:
 % i. «ті» (принаймні один та можливо і інші).
 % Які монтажери (ПІБ) брав участь у монжажу хоча б одного фільму, в якому знімався заданий актор? (Задане прізвище актора)
@@ -269,7 +267,7 @@ badActorsOnly(Year, Actors_id) :- films_not_the_year(Year, Films), movie(Films, 
 onlyInMoviesSet(Actors_id, Actor_PIB, Year):- atLeastOneSetActors(Actors_id, Actor_PIB, Year), not(badActorsOnly(Year, Actors_id)).
 
 atLeastOneSetActors(Actors_id, Actor_PIB, Year) :- movie(Film_names, date(Year,_,_), _, _, _, Id_filmCrew),
-											 worker_filmCrew(Id_filmCrew, Actors_id, _), worker(Actors_id, _, Actor_PIB, _, _, _, _,"actor", _).
+                       worker_filmCrew(Id_filmCrew, Actors_id, _), worker(Actors_id, _, Actor_PIB, _, _, _, _,"actor", _).
 
 only_those_actots(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Surname,Year), Actor_PIB).
 
@@ -279,13 +277,13 @@ only_those_actots(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Su
 % all_screenwriters(+прізвище режисера,-ПІБ сценариста).
 
 badScreenwriters(Screenwriter_id, Director_Surname):- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
-													  worker_filmCrew(Id_filmCrew, Director_Id, _), movie(Film_name, _, _, _, Id_filmCrew, _),
-													  worker(Screenwriter_Id, _, _, _, _, _, _,"screenwriter", _), worker_filmCrew(Ids_filmCrew, Screenwriter_id, _),
-													  not(movie(Film_name, _, _, _, Ids_filmCrew, _)).
+                            worker_filmCrew(Id_filmCrew, Director_Id, _), movie(Film_name, _, _, _, Id_filmCrew, _),
+                            worker(Screenwriter_Id, _, _, _, _, _, _,"screenwriter", _), worker_filmCrew(Ids_filmCrew, Screenwriter_id, _),
+                            not(movie(Film_name, _, _, _, Ids_filmCrew, _)).
 
 all_screenwriters(Director_Surname, Screenwriter_PIB) :- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
-														 worker(Screenwriter_Id, _, Screenwriter_PIB, _, _, _, _,"screenwriter", _),
-														 not(badScreenwriters(Screenwriter_Id, Director_Surname)).
+                             worker(Screenwriter_Id, _, Screenwriter_PIB, _, _, _, _,"screenwriter", _),
+                             not(badScreenwriters(Screenwriter_Id, Director_Surname)).
 
 
 % iv. «усі ті та тільки ті».
