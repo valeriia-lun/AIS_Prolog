@@ -49,3 +49,27 @@ worker_filmCrew(4, _, 76400).
 worker_filmCrew(4, _, 123000).
 worker_filmCrew(4, _, 358800).
 worker_filmCrew(4, _, 348820).
+
+%Правило №. Група монтажерів(номер_групи_монтажерів(PK),дата_початку_роботи_групи_монтажерів, дата_закінчення_роботи_групи_монтажерів)
+editCrew(1, date(2019-01-05), date(2019-03-15)).
+editCrew(2, date(2020-09-10), date(2020-11-01)).
+editCrew(3, date(2019-02-15), date(2019-05-02)).
+editCrew(4, date(2017-06-04), date(2017-10-10)).
+
+%Звязуюча таблиця монтажерів та групи монтажерів. editor_editCrew(номер_групи_монтажерів(PPK, FK), табельний_номер_монтажера(PPK, FK), гонорар)
+editor_editCrew(1, _, 234000).
+editor_editCrew(1, _, 12300).
+editor_editCrew(1, _, 98000).
+
+editor_editCrew(2, _, 230000).
+editor_editCrew(2, _, 76500).
+editor_editCrew(2, _, 549399).
+editor_editCrew(2, _, 234890).
+
+editor_editCrew(3, _, 23499).
+editor_editCrew(3, _, 129000).
+
+editor_editCrew(4, _, 540000).
+editor_editCrew(4, _, 123000).
+editor_editCrew(4, _, 98000).
+
