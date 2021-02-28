@@ -208,12 +208,17 @@ editor_editCrew(4, 8, 98000).
 % Три змістовні запити до БД (на власний розсуд, але не елементарні).
 % Вік акторів, зайнятих на зйомках даного фільму
 % actors_age_of_film(+назва фільму,-вік акторів).
-actorAge(X,Actors_age):- filmed(X,Y,_,_), actor(Y,_,Age,_), Actors_age is 2020-Age.
-
 
 
 % В яких фільмах знімався даний актор
 % films_of_actor(+прізвище актора,-фільми).
+
+films_of_actor(Surname, Movie):- worker_filmCrew(filmCrew_number, ID_actor, _), movie(Movie, _, _, _, filmCrew_number, _), worker(ID_actor, _, pib(_,Surname,_), _, _, _, _, _, _).
+
+
+
+
+
 
 
 % Дата народження монтажера, який був задіяний в заданому фільмі
