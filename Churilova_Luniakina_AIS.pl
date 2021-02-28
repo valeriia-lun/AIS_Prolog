@@ -107,16 +107,14 @@ worker_filmCrew(4, _, 348820).
 
 
 % правило №1: Монтажер (табельний номер(PK), зарплата, піб(імя, прізвище, по-батькові), телефон[], домашня адреса, працює з, дата народження)
-editor(1, 23000, pib("Tom", "Smith", "Edisson"), ["0631141131","0931242062"], "Kyiv, Sunny, 15b", date(2019-11-11), date(1986-03-11)).
+editor(1, 23000, pib("Tom", "Smith", "Edisson"), ["0631141131","0931242062"], "Kyiv, Sunny, 15b", date(2018-11-11), date(1986-03-11)).
 editor(2, 54390, pib("Jack", "Green", "Apple"), ["0634638436","0995647382","0667353342"], "Kyiv, Milky, 234", date(2017-05-16), date(1989-11-01)).
 editor(3, 76800, pib("Helen", "Youth", "Ann"), ["0998765432"], "Kyiv, Flower, 23", date(2020-01-22), date(1979-11-29)).
 editor(4, 18000, pib("Ann", "Brown", "Wo"), ["0635643867","0937676548","0997768345","0633454347"], "Kyiv, Cold, 121", date(2017-08-03), date(1992-06-13)).
-editor(5, 45700, pib("Daniel", "Whitw", "Carlos"), ["0668780403","0936767548"], "Kyiv, Plant, 233", date(2019-10-04), date(1994-09-25)).
-editor(6, 34900, pib("Alice", "Blue", "Karen"), ["0632314543","0998785647","0630009876"], "Kyiv, Snow, 228", date(2019-03-04), date(1989-10-18)).
+editor(5, 45700, pib("Daniel", "Whitw", "Carlos"), ["0668780403","0936767548"], "Kyiv, Plant, 233", date(2018-10-04), date(1994-09-25)).
+editor(6, 34900, pib("Alice", "Blue", "Karen"), ["0632314543","0998785647","0630009876"], "Kyiv, Snow, 228", date(2016-03-04), date(1989-10-18)).
 editor(7, 18000, pib("Max", "Harmon", "Winny"), ["0998976758"], "Kyiv, White, 13", date(2018-09-18), date(1986-02-14)).
-editor(8, 45900, pib("John", "Swissy", "Winson"), ["0668972343","0998807056"], "Kyiv, Victory, 111", date(2018-07-23), date(1995-08-27)).
-
-
+editor(8, 45900, pib("John", "Swissy", "Winson"), ["0668972343","0998807056"], "Kyiv, Victory, 111", date(2016-07-23), date(1995-08-27)).
 
 %Правило №. Група монтажерів(номер_групи_монтажерів(PK),дата_початку_роботи_групи_монтажерів, дата_закінчення_роботи_групи_монтажерів)
 editCrew(1, date(2019-01-05), date(2019-03-15)).
@@ -125,19 +123,19 @@ editCrew(3, date(2019-02-15), date(2019-05-02)).
 editCrew(4, date(2017-06-04), date(2017-10-10)).
 
 %Звязуюча таблиця монтажерів та групи монтажерів. editor_editCrew(номер_групи_монтажерів(PPK, FK), табельний_номер_монтажера(PPK, FK), гонорар)
-editor_editCrew(1, _, 234000).
-editor_editCrew(1, _, 12300).
-editor_editCrew(1, _, 98000).
+editor_editCrew(1, 1, 234000).
+editor_editCrew(1, 2, 12300).
+editor_editCrew(1, 4, 98000).
 
-editor_editCrew(2, _, 230000).
-editor_editCrew(2, _, 76500).
-editor_editCrew(2, _, 549399).
-editor_editCrew(2, _, 234890).
+editor_editCrew(2, 3, 230000).
+editor_editCrew(2, 5, 76500).
+editor_editCrew(2, 6, 549399).
+editor_editCrew(2, 8, 234890).
 
-editor_editCrew(3, _, 23499).
-editor_editCrew(3, _, 129000).
+editor_editCrew(3, 5, 23499).
+editor_editCrew(3, 7, 129000).
 
-editor_editCrew(4, _, 540000).
-editor_editCrew(4, _, 123000).
-editor_editCrew(4, _, 98000).
+editor_editCrew(4, 4, 540000).
+editor_editCrew(4, 6, 123000).
+editor_editCrew(4, 8, 98000).
 
