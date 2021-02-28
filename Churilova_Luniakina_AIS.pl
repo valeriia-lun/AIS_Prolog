@@ -240,7 +240,7 @@ avrg(X, Avrg) :- sum(X, Res), length(X, Amount), Avrg is Res / Amount.
 
 avr_salary_of_actors(Film_name, Salary) :-  salary_of_all_actors_in_film_list(Film_name, Sal), avrg(Sal, Res), Salary is Res.
 
-
+   
 
 % Мають бути запити (правила-запити) типу:
 % i. «ті» (принаймні один та можливо і інші).
