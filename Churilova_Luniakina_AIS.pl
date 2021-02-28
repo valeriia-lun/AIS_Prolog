@@ -79,16 +79,19 @@ movie("See you tomorrow", date(2019-05-04], [168,158,54], 3, 3).
 movie("The Old Mill", date(2017-10-15), [183,32], 4, 1).
 
 % Багатозначний атрибут жанр [1..n]. genres(код_жанру(PK), назва_жанру)
-genres(1,"Fiction").
-genres(2,"Drama").
-genres(3,"Horror").
-genres(4,"Cartoon").
+genres(1, "Fiction").
+genres(2, "Drama").
+genres(3, "Horror").
+genres(4, "Cartoon").
+genres(5, "Comedy").
 
 % Звязуюча таблиця між фільмами та жанрами. genres_movies(назва_фільму(PPK, FK), код_жанру(PPK, FK))
 genres_movies("The First Star", 1).
 genres_movies("Candy Bar", 4).
 genres_movies("See you tomorrow", 2).
 genres_movies("The Old Mill", 3).
+genres_movies("See you tomorrow", 5).
+genres_movies("The Old Mill", 2).
 
 % Знімальна група(номер_знімальної_групи(PK),дата_початку_роботи_знімальної_групи, дата_закінчення_роботи_знімальної_групи)
 filmCrew(1, date(2018-11-12), date(2019-01-03)).
@@ -165,7 +168,6 @@ worker_filmCrew(4, 34, 248820).
 worker_filmCrew(4, 35, 248820).
 worker_filmCrew(4, 38, 248820).
 worker_filmCrew(4, 39, 248820).
-
 
 % Монтажер (табельний номер(PK), зарплата, піб(імя, прізвище, по-батькові), телефон(), домашня адреса, працює з, дата народження)
 editor(1, 23000, pib("Tom", "Smith", "Edisson"), phones("0631141131","0931242062"), "Kyiv, Sunny, 15b", date(2018-11-11), date(1986-03-11)).
