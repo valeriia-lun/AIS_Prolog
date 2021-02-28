@@ -216,8 +216,8 @@ actors_age_of_film(Movie,Actors_age):- movie(Movie, _, _, _, Id_filmCrew, _), fi
 % В яких фільмах знімався даний актор
 % films_of_actor(+прізвище актора,-фільми). ??????????????????
 
-films_of_actor(Surname, Movie):- worker(ID_actor, _, pib(_,Surname,_), _, _, _, _, _, _), 
-                                 worker_filmCrew(filmCrew_number, ID_actor, _), movie(Movie, _, _, _, filmCrew_number, _).
+films_of_actor(Surname, Movie):- worker(Id_actor, _, pib(_,Surname,_), _, _, _, _, _, _), 
+                                 worker_filmCrew(FilmCrew_number, Id_actor, _), movie(Movie, _, _, _, FilmCrew_number, _).
 
 
 
