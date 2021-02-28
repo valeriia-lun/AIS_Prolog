@@ -14,23 +14,23 @@ worker(9, 23000, pib("Valerii", "Prokhorov", "Dmytrovych"), ["0631315220","06312
 worker(10, 45000, pib("Mykhailo", "Dykhner", "Romanovych"), ["0631377220","0631237767"], "Kyiv, Saksaganskogo, 77b", date(2018-11-09), date(1988-10-25), "actor", "male").
 
 % Водії
-worker(11, 22000, pib("Volodymyr", "Dykhner", "Sergiyovych"), ["0631720220","0630907767"], "Kyiv, Sokurenko, 12", date(2017-11-09), date(1967-11-25), "driver", "male").
+worker(11, 22000, pib("Volodymyr", "Dykhner", "Sergiyovych"), ["0631720220","0630907767"], "Kyiv, Sokurenko, 12", date(2016-11-09), date(1967-11-25), "driver", "male").
 worker(12, 22000, pib("Sergii", "Vasylenko", "Romanovych"), ["0631309020"], "Kyiv, Vynogradna, 90", date(2019-09-01), date(1971-11-29), "driver", "male").
 
 % Кухарі
 worker(13, 18000, pib("Oksana", "Doroshenko", "Romanovych"), ["0931077220","0631237767","0551200767"], "Kyiv, Voronova, 80", date(2020-11-01), date(1970-02-15), "cook", "female").
-worker(14, 19000, pib("Alina", "Rezolovna", "Andriivna"), ["0631237007"], "Kyiv, Mayakovskogo, 81", date(2019-07-21), date(1975-07-20), "cook", "female").
+worker(14, 19000, pib("Alina", "Rezolovna", "Andriivna"), ["0631237007"], "Kyiv, Mayakovskogo, 81", date(2015-07-21), date(1975-07-20), "cook", "female").
 
 % Вантажники
-worker(15, 20000, pib("Oleksii", "Trandino", "Evgenovych"), ["06309007767"], "Kyiv, Saksaganskogo, 90", date(2017-11-29), date(1987-06-25), "loader", "male").
+worker(15, 20000, pib("Oleksii", "Trandino", "Evgenovych"), ["06309007767"], "Kyiv, Saksaganskogo, 90", date(2017-01-29), date(1987-06-25), "loader", "male").
 worker(16, 21000, pib("Semen", "Kotsukon", "Artemovych"), ["0631300220","0631000220","0631000067"], "Kyiv, Solomynka, 23", date(2011-11-28), date(1990-04-22), "loader", "male").
 
 % Світлорежисери
-worker(17, 39000, pib("Olena", "Usupova", "Mykolayovych"), ["0631388820","0631899767"], "Kyiv, Molochna, 7", date(2020-03-03), date(1968-06-21), "lighter", "female").
+worker(17, 39000, pib("Olena", "Usupova", "Mykolayovych"), ["0631388820","0631899767"], "Kyiv, Molochna, 7", date(2016-03-03), date(1968-06-21), "lighter", "female").
 worker(18, 40000, pib("Illia", "Ternov", "Evgenovych"), ["0637777767"], "Kyiv, Bulochna, 23", date(2017-12-01), date(1976-04-11), "lighter", "male").
 
 % Звукорежисери
-worker(19, 42000, pib("Evgen", "Mykolayovych", "Youriyovych"), ["0631347220","0631437767"], "Kyiv, Tarasa Shevchenko, 9", date(2019-01-19), date(1991-07-09), "soundman", "male").
+worker(19, 42000, pib("Evgen", "Mykolayovych", "Youriyovych"), ["0631347220","0631437767"], "Kyiv, Tarasa Shevchenko, 9", date(2016-01-19), date(1991-07-09), "soundman", "male").
 worker(20, 44000, pib("Anton", "Rezetko", "Vasyliovych"), ["0631300020","0631007767","0631237007"], "Kyiv, Ilona, 29", date(2016-09-29), date(1987-02-19), "soundman", "male").
 
 % Прибиральники
@@ -39,7 +39,7 @@ worker(22, 41000, pib("Inna", "Gora", "Volodymyrivna"), ["0551377220","055123776
 
 % Художники-постановщик
 worker(23, 47000, pib("Maryna", "Gorbunova", "Oleksiivna"), ["0631237000"], "Kyiv, Molochna, 45", date(2015-02-09), date(1985-11-22), "artist director", "female").
-worker(24, 48000, pib("Mykhailo", "Motiashov", "Semenovych"), ["0631307220","0631207767"], "Kyiv, Khlibna, 77", date(2019-07-29), date(1989-07-05), "artist director", "male").
+worker(24, 48000, pib("Mykhailo", "Motiashov", "Semenovych"), ["0631307220","0631207767"], "Kyiv, Khlibna, 77", date(2016-07-29), date(1989-07-05), "artist director", "male").
 
 % Художники по костюмах
 worker(25, 39000, pib("Alona", "Voloshkova", "Andriivna"), ["0630007220"], "Kyiv, Rivna, 77", date(2016-01-21), date(1992-03-23), "costume designer", "female").
@@ -47,18 +47,18 @@ worker(26, 40000, pib("Nadia", "Aleksandrova", "Sergiivna"), ["0550077220"], "Ky
 
 % Гримери
 worker(27, 46000, pib("Anna", "Dolosh", "Danylivna"), ["06312876567"], "Kyiv, Saksaganskogo, 10", date(2020-11-09), date(1988-01-27), "make-up artist", "female").
-worker(28, 47000, pib("Oleg", "Olonkov", "Dmytrovych"), ["0638987767"], "Kyiv, Antonovycha, 77", date(2021-01-04), date(1992-07-29), "make-up artist", "male").
+worker(28, 47000, pib("Oleg", "Olonkov", "Dmytrovych"), ["0638987767"], "Kyiv, Antonovycha, 77", date(2016-01-04), date(1992-07-29), "make-up artist", "male").
 
 % Агенти по акторах
-worker(29, 48000, pib("Dmytro", "Lopovych", "Romanovych"), ["0631377220","0631237767"], "Kyiv, Saksaganskogo, 77b", date(2018-11-09), date(1988-10-25), "actor agent", "male").
-worker(30, 47000, pib("Maryna", "Galushka", "Antonivna"), ["0631377220","0631237767"], "Kyiv, Saksaganskogo, 77b", date(2018-11-09), date(1988-10-25), "actor agent", "female").
+worker(29, 48000, pib("Dmytro", "Lopovych", "Romanovych"), ["0631390220","0631200767"], "Kyiv, Saksaganskogo, 77b", date(2018-11-09), date(1988-10-25), "actor agent", "male").
+worker(30, 47000, pib("Maryna", "Galushka", "Antonivna"), ["0631379920","0631237767"], "Kyiv, Saksaganskogo, 11", date(2016-11-09), date(1988-10-25), "actor agent", "female").
 
 % Режисери
-worker(31, 42000, pib("Roman", "Tarasenko", "Mykolayovych"), ["0630092897","0631980867"], "Kyiv, Sokovyta, 112", date(2017-04-19), date(1977-12-25), "director", "male").
-worker(32, 43000, pib("Taras", "Dolonko", "Igorovych"), ["0631123667"], "Kyiv, Yabluneva, 180", date(2018-02-29), date(1979-11-01), "director", "male").
+worker(31, 42000, pib("Roman", "Tarasenko", "Mykolayovych"), ["0630092897","0631980867"], "Kyiv, Sokovyta, 112", date(2016-04-19), date(1977-12-25), "director", "male").
+worker(32, 43000, pib("Taras", "Dolonko", "Igorovych"), ["0631123667"], "Kyiv, Yabluneva, 180", date(2016-02-29), date(1979-11-01), "director", "male").
 
 % Сценаристи
-worker(33, 42000, pib("Lidia", "Vasylkivskii", "Vasylivna"), ["0631377220","0631298167","0659037767"], "Kyiv, Maryny Tsvetaivoi, 19", date(2019-08-15), date(1983-02-25), "screenwriter", "female").
+worker(33, 42000, pib("Lidia", "Vasylkivskii", "Vasylivna"), ["0631377220","0631298167","0659037767"], "Kyiv, Maryny Tsvetaivoi, 19", date(2016-08-15), date(1983-02-25), "screenwriter", "female").
 worker(34, 41000, pib("Mykhailo", "Usupov", "Tarasovych"), ["0635557220","0555237767"], "Kyiv, Anny Akhmatovoi, 11a", date(2011-01-21), date(1971-11-20), "screenwriter", "male").
 
 % Оператори
@@ -70,7 +70,7 @@ worker(37, 47000, pib("Oleg", "Falyush", "Olegovych"), ["0631003220"], "Kyiv, Sa
 worker(38, 45000, pib("Semen", "Gorbunov", "Dmytrovych"), ["0630987220"], "Kyiv, Pysarzhevskogo, 8a", date(2015-06-19), date(1970-04-03), "production administrator", "male").
 
 % Генеральний продюсер
-worker(39, 68000, pib("Andii", "Pukhliar", "Oleksiyovych"), ["0631371110"], "Kyiv, Naukova, 77", date(2010-05-28), date(1972-01-25), "general producer", "male").
+worker(39, 68000, pib("Andii", "Pukhliar", "Oleksiyovych"), ["0631371110"], "Kyiv, Naukova, 77", date(2009-05-28), date(1972-01-25), "general producer", "male").
 
 %Правило №2. Фільм(назва_фільму(PK), дата_випуску, тривалість, бюджет, номер_знімальної_групи(FK), номер_групи_монтажерів(FK))
 movie("The First Star", date(2019-03-21), durations(120,32), 1023010, 1, 1).
@@ -134,16 +134,37 @@ worker_filmCrew(2, 36, 85500).
 worker_filmCrew(2, 37, 120000).
 worker_filmCrew(2, 39, 310000).
 
-worker_filmCrew(3, 1, 143334).
-worker_filmCrew(3, 3, 879330).
-worker_filmCrew(3, _, 45888).
-worker_filmCrew(3, _, 129900).
+worker_filmCrew(3, 1, 143134).
+worker_filmCrew(3, 3, 8930).
+worker_filmCrew(3, 17, 45888).
+worker_filmCrew(3, 19, 129900).
+worker_filmCrew(3, 24, 45888).
+worker_filmCrew(3, 25, 108900).
+worker_filmCrew(3, 28, 45888).
+worker_filmCrew(3, 32, 122900).
+worker_filmCrew(3, 33, 45888).
+worker_filmCrew(3, 35, 129800).
+worker_filmCrew(3, 37, 45808).
+worker_filmCrew(3, 39, 123400).
 
 worker_filmCrew(4, 8, 12000).
-worker_filmCrew(4, 7, 76400).
-worker_filmCrew(4, 3, 123000).
-worker_filmCrew(4, _, 358800).
-worker_filmCrew(4, _, 348820).
+worker_filmCrew(4, 7, 26400).
+worker_filmCrew(4, 3, 13000).
+worker_filmCrew(4, 11, 258800).
+worker_filmCrew(4, 14, 248820).
+worker_filmCrew(4, 15, 258800).
+worker_filmCrew(4, 17, 148820).
+worker_filmCrew(4, 20, 158800).
+worker_filmCrew(4, 22, 148820).
+worker_filmCrew(4, 24, 258800).
+worker_filmCrew(4, 25, 248820).
+worker_filmCrew(4, 28, 258800).
+worker_filmCrew(4, 30, 248820).
+worker_filmCrew(4, 31, 258800).
+worker_filmCrew(4, 34, 248820).
+worker_filmCrew(4, 35, 248820).
+worker_filmCrew(4, 38, 248820).
+worker_filmCrew(4, 39, 248820).
 
 
 %Правило №4: Монтажер (табельний номер(PK), зарплата, піб(імя, прізвище, по-батькові), телефон[], домашня адреса, працює з, дата народження)
