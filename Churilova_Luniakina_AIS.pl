@@ -212,6 +212,19 @@ actors_age_of_film(Movie,Actors_age):- movie(Movie, _, _, _, Id_filmCrew, _), fi
                                        worker_filmCrew(Id_filmCrew, Id_Actor, _), worker(Id_Actor, _, _, _, _, _, date(Y,_,_) ,"actor", _),
                                        Actors_age is 2020 - Y.
 
+% Приклади:
+% ?- actors_age_of_film("The First Star", X).
+% Відповідь:
+% X = 38 ;
+% X = 43 ;
+% X = 28 ;
+%
+% ?- actors_age_of_film("See you tomorrow", X).
+% Відповідь:
+% X = 30 ;
+% X = 40 ;
+
+
 
 % В яких фільмах знімався даний актор
 % films_of_actor(+прізвище актора,-фільми).
@@ -223,8 +236,21 @@ films_of_actor(Surname, Movie):- worker(Id_actor, _, pib(_,Surname,_), _, _, _, 
 
 % Дата народження монтажера, який був задіяний в заданому фільмі
 % editor_birth_date_of_film(+назва фільму,-дата народження).
+
 editor_birth_date_of_film(Movie, BirtDate) :- movie(Movie, _, _, _, _, Id_editCrew), editCrew(Id_editCrew, _, _),
                                               editor_editCrew(Id_editCrew, Id_editor, _), editor(Id_editor, _, _, _, _, _, BirtDate).
+
+% Приклади:
+% ?- editor_birth_date_of_film("The First Star", X).
+% Відповідь:
+% X = date(1986, 3, 11) ;
+% X = date(1989, 11, 1) ;
+% X = date(1992, 6, 13).
+%
+% ?- editor_birth_date_of_film("See you tomorrow", X).
+% Відповідь:
+% X = date(1994, 9, 25) ;
+% X = date(1986, 2, 14).
 
 
 % Запит з сумуванням числових даних по стовпчику таблиці чи її частини
@@ -251,7 +277,6 @@ atLeastOneSet(Ids, Editor_Surname, Actor_Surname) :- worker(Actor_Id, _, pib(_,A
                                                      movie(Film_names, _, _, _, _, Id_editCrew), editor_editCrew(Id_editCrew, Ids, _), editor(Ids, _, Editor_Surname, _, _, _, _).
 
 those_editors(Actor_surname, Editor_PIB) :- setof((Ids, Surn), atLeastOneSet(Ids, Surn, Actor_surname), Editor_PIB).
-
 
 
 
@@ -296,8 +321,26 @@ all_screenwriters(Director_Surname, Screenwriter_PIB) :- worker(Director_Id, _, 
 % all_actors_of_the_first_star().
 all_actors_of_the_first_star :- movie("The First Star", _, _, _, Id_filmCrew, _), worker_filmCrew(Id_filmCrew, Id_Actor, _), worker(Id_Actor, _, PIB, _, _, _, _, "actor", _), write(PIB).
 
+% Приклад:
+% ?- all_actors_of_the_first_star.
+% Відповідь:
+% pib(Vera,Badun,Sergiivna)
+% true ;
+% pib(Valerie,Nikulchenko,Andriivna)
+% true ;
+% pib(Roman,Falyush,Dmytrovych)
+% true ;
+
 
 % Усі режисери, які знімали драми (ПІБ режисерів)
 % all_directors_of_drama().
 all_directors_of_drama :- genres(Id_genre, "Drama"), genres_movies(Movie, Id_genre), movie(Movie, _, _, _, Id_filmCrew, _), 
                           worker_filmCrew(Id_filmCrew, Id_director, _), worker(Id_director, _, PIB, _, _, _, _, "director", _), write(PIB).
+
+% Приклад:
+% ?- all_directors_of_drama.
+% Відповідь:
+% pib(Taras,Dolonko,Igorovych)
+% true ;
+% pib(Roman,Tarasenko,Mykolayovych)
+% true ;
