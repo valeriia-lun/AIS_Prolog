@@ -215,12 +215,16 @@ actors_age_of_film(Movie,Actors_age):- movie(Movie, _, _, _, Id_filmCrew, _), fi
 
 % В яких фільмах знімався даний актор
 % films_of_actor(+прізвище актора,-фільми). ??????????????????
-films_of_actor(Surname, Movie):- worker(ID_actor, _, pib(_,Surname,_), _, _, _, _, _, _), worker_filmCrew(filmCrew_number, ID_actor, _), movie(Movie, _, _, _, filmCrew_number, _).
+
+films_of_actor(Surname, Movie):- worker(Id_actor, _, pib(_,Surname,_), _, _, _, _, _, _), 
+                                 worker_filmCrew(FilmCrew_number, Id_actor, _), movie(Movie, _, _, _, FilmCrew_number, _).
+
 
 
 % Дата народження монтажера, який був задіяний в заданому фільмі
 % editor_birth_date_of_film(+назва фільму,-дата народження).
-
+editor_birth_date_of_film(Movie, BirtDate) :- movie(Movie, _, _, _, _, Id_editCrew), editCrew(Id_editCrew, _, _),
+                                              editor_editCrew(Id_editCrew, Id_editor, _), editor(Id_editor, _, _, _, _, _, BirtDate).
 
 
 % Запит з сумуванням числових даних по стовпчику таблиці чи її частини
@@ -260,9 +264,12 @@ avr_salary_of_actors(Film_name, Salary) :-  salary_of_all_actors_in_film_list(Fi
 % Визначити принаймні два оператори
 % Усі актори фільму "The First Star" (ПІБ акторів)
 % all_actors_of_the_first_star().
+all_actors_of_the_first_star :- movie("The First Star", _, _, _, Id_filmCrew, _), worker_filmCrew(Id_filmCrew, Id_Actor, _), worker(Id_Actor, _, PIB, _, _, _, _, "actor", _), write(PIB).
 
 
 % Усі режисери, які знімали драми (ПІБ режисерів)
 % all_directors_of_drama().
+all_directors_of_drama :- genres(Id_genre, "Drama"), genres_movies(Movie, Id_genre), movie(Movie, _, _, _, Id_filmCrew, _), 
+                          worker_filmCrew(Id_filmCrew, Id_director, _), worker(Id_director, _, PIB, _, _, _, _, "director", _), write(PIB).
 
 
