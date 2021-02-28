@@ -215,13 +215,7 @@ actors_age_of_film(Movie,Actors_age):- movie(Movie, _, _, _, Id_filmCrew, _), fi
 
 % В яких фільмах знімався даний актор
 % films_of_actor(+прізвище актора,-фільми). ??????????????????
-
 films_of_actor(Surname, Movie):- worker(ID_actor, _, pib(_,Surname,_), _, _, _, _, _, _), worker_filmCrew(filmCrew_number, ID_actor, _), movie(Movie, _, _, _, filmCrew_number, _).
-
-
-
-
-
 
 
 % Дата народження монтажера, який був задіяний в заданому фільмі
@@ -232,7 +226,15 @@ films_of_actor(Surname, Movie):- worker(ID_actor, _, pib(_,Surname,_), _, _, _, 
 % Запит з сумуванням числових даних по стовпчику таблиці чи її частини
 % Середня зарплата акторів заданого фільму
 % avr_salary_of_actors(+назва фільму,-середня зарплата).
+salary_of_all_actors_in_film(Film_name, Salary):- worker(Id_actor, Salary, _, _, _, _, _, "actor", _), worker_filmCrew(Id_filmCrew, Id_actor, _), movie(Film_name, _, _, _, Id_filmCrew, _). 
+salary_of_all_actors_in_film_list(Film_name, Sal):- findall(X,salary_of_all_actors_in_film(Film_name,X),Sal).
 
+sum([], 0).          
+sum([X|Xs], Res) :-   sum(Xs, Y), Res is X + Y.
+
+avrg(X, Avrg) :- sum(X, Res), length(X, Amount), Avrg is Res / Amount.
+
+avr_salary_of_actors(Film_name, Salary) :-  salary_of_all_actors_in_film_list(Film_name, Sal), avrg(Sal, Res), Salary is Res.
 
 
 
