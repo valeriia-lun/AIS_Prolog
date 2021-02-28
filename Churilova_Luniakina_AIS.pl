@@ -256,6 +256,7 @@ editor_birth_date_of_film(Movie, BirtDate) :- movie(Movie, _, _, _, _, Id_editCr
 % Визначити принаймні два оператори
 % Усі актори фільму "The First Star" (ПІБ акторів)
 % all_actors_of_the_first_star().
+all_actors_of_the_first_star :- movie("The First Star", _, _, _, Id_filmCrew, _), worker_filmCrew(Id_filmCrew, Id_Actor, _), worker(Id_Actor, _, PIB, _, _, _, _, "actor", _), write(PIB).
 
 
 % Усі режисери, які знімали драми (ПІБ режисерів)
