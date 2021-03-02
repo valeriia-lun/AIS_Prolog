@@ -163,7 +163,7 @@ worker_filmCrew(4, 24, 258800).
 worker_filmCrew(4, 25, 248820).
 worker_filmCrew(4, 28, 258800).
 worker_filmCrew(4, 30, 248820).
-worker_filmCrew(4, 31, 258800).
+worker_filmCrew(4, 31, 258800). 
 worker_filmCrew(4, 34, 248820).
 worker_filmCrew(4, 35, 248820).
 worker_filmCrew(4, 38, 248820).
@@ -328,10 +328,13 @@ only_those_actors(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Su
 % Приклади: 
 %
 % ?- only_those_actors(2019,X).
-% Відповідь: X = [(1, pib("Sofiya", "Makarenko", "Olegivna")),  (3, pib("Oleg", "Maksymenko", "Volodymyrovych")),  (5, pib("Vera", "Badun", "Sergiivna")),  (6, pib("Valerie", "Nikulchenko", "Andriivna")),  (8, pib("Roman", "Falyush", "Dmytrovych"))].
+% Відповідь: 
+% X = [(1, pib("Sofiya", "Makarenko", "Olegivna")),  (3, pib("Oleg", "Maksymenko", "Volodymyrovych")),  (5, pib("Vera", "Badun", "Sergiivna")),  (6, pib("Valerie", "Nikulchenko", "Andriivna")),  (8, pib("Roman", "Falyush", "Dmytrovych"))].
 %
 % ?- only_those_actors(2020,X).
-% Відповідь: X = [(5, pib("Vera", "Badun", "Sergiivna")),  (6, pib("Valerie", "Nikulchenko", "Andriivna")),  (8, pib("Roman", "Falyush", "Dmytrovych"))].
+% Відповідь: 
+% X = [(5, pib("Vera", "Badun", "Sergiivna")),  (6, pib("Valerie", "Nikulchenko", "Andriivna")),  (8, pib("Roman", "Falyush", "Dmytrovych"))].
+
 
 
 
@@ -343,12 +346,22 @@ only_those_actors(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Su
 
 badScreenwriters(Screenwriter_id, Director_Surname):- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
                             worker_filmCrew(Id_filmCrew, Director_Id, _), movie(Film_name, _, _, _, Id_filmCrew, _),
-                            worker(Screenwriter_id, _, _, _, _, _, _,"screenwriter", _), worker_filmCrew(Ids_filmCrew, Screenwriter_id, _),
-                            not(movie(Film_name, _, _, _, Ids_filmCrew, _)).
+                            worker(Screenwriter_id, _, _, _, _, _, _,"screenwriter", _), not(worker_filmCrew(Id_filmCrew, Screenwriter_id, _)),
+                            movie(Film_name, _, _, _, Id_filmCrew, _).
 
 all_screenwriters(Director_Surname, Screenwriter_PIB) :- worker(_, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
                              worker(Screenwriter_Id, _, Screenwriter_PIB, _, _, _, _,"screenwriter", _),
                              not(badScreenwriters(Screenwriter_Id, Director_Surname)).
+
+% Приклади: 
+%
+% ?- all_screenwriters("Tarasenko",X).
+% Відповідь: 
+% X = pib("Mykhailo", "Usupov", "Tarasovych") .
+% 
+% ?- all_screenwriters("Dolonko",X).
+% Відповідь: 
+% X = pib("Lidia", "Vasylkivskii", "Vasylivna") .
 
 
 
