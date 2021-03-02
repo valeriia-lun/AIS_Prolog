@@ -391,6 +391,7 @@ all_and_only_screenwriters(Director_Surname, Screenwriter_PIB):- all_screenwrite
 
 
 
+
 % Визначити принаймні два оператори
 % Усі актори фільму "The First Star" (ПІБ акторів)
 % all_actors_of_the_first_star().
@@ -405,6 +406,7 @@ all_actors_of_the_first_star :- movie("The First Star", _, _, _, Id_filmCrew, _)
 % true ;
 % pib(Roman,Falyush,Dmytrovych)
 % true ;
+
 
 
 % Усі режисери, які знімали драми (ПІБ режисерів)
