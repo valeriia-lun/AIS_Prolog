@@ -306,9 +306,6 @@ those_editors(Actor_surname, Editor_PIB) :- setof((Ids, Surn), atLeastOneSet(Ids
 % Відповідь: X = [(1, pib("Tom", "Smith", "Edisson")),  (2, pib("Jack", "Green", "Apple")),  (4, pib("Ann", "Brown", "Wo"))].
 
 
-
-
-
 % ii. «тільки ті» (хоча б один, а інші ні).
 % Які актори (ПІБ) знімались тільки в тих фільмах, які вийшли в заданому році?
 % only_those_actots(+рік,-ПІБ акторів).
@@ -335,11 +332,6 @@ only_those_actors(Year,Actor_PIB):- setof((Ids, Surname), onlyInMoviesSet(Ids,Su
 % Відповідь: 
 % X = [(5, pib("Vera", "Badun", "Sergiivna")),  (6, pib("Valerie", "Nikulchenko", "Andriivna")),  (8, pib("Roman", "Falyush", "Dmytrovych"))].
 
-
-
-
-
-
 % iii. «усі ті», можливо і інші.
 % Які сценаристи (ПІБ) писали сценарій для всіх фільмів заданого режисера? (Задане прізвище режисера)
 % all_screenwriters(+прізвище режисера,-ПІБ сценариста).
@@ -362,8 +354,6 @@ all_screenwriters(Director_Surname, Screenwriter_PIB) :- worker(_, _, pib(_,Dire
 % ?- all_screenwriters("Dolonko",X).
 % Відповідь: 
 % X = pib("Lidia", "Vasylkivskii", "Vasylivna") .
-
-
 
 
 % iv. «усі ті та тільки ті».
@@ -390,28 +380,6 @@ all_and_only_screenwriters(Director_Surname, Screenwriter_PIB):- all_screenwrite
 % Відповідь: 
 % X = pib("Mykhailo", "Usupov", "Tarasovych") .
 
-
-
-% iv. «усі ті та тільки ті».
-% Жанри фільмів (назва жанру), які знімав заданий режисер? (Задане прізвище режисера)
-% all_and_only_films(+прізвище режисера,-жанри).
-
-%  badGenres(Genre_id, Director_Surname) :- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
-%                                           worker_filmCrew(Id_filmCrew, Director_Id, _), movie(Film_name, _, _, _, Id_filmCrew, _),
-%                                           genres(Genre_id,_), not(genres_movies(Film_name,Genre_id)).
-
-% all_genres(Director_Surname, Genre_id) :- worker(_, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
-%       								      genres(Genre_id,_), not(badGenres(Genre_id, Director_Surname)).
-
-% notOurFilms(Films, Director_Surname) :- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
-%  										movie(Films, _, _, _, Id_filmCrew,_), not(worker_filmCrew(Id_filmCrew, Director_Id,_)).
- 
-
-% badGenresOnly(Genre_id, Director_Surname) :- worker(Director_Id, _, pib(_,Director_Surname,_), _, _, _, _,"director", _),
-% 											 notOurFilms(Films, Director_Surname), genres_movies(Films, Genre_id).
-
-% all_and_only_films(Director_Surname, Genres) :- all_genres(Director_Surname, Genre_id), not(badGenresOnly(Genre_id, Director_Surname)),
-% 												genres(Genre_id,Genres).
 
 % Визначити принаймні два оператори
 % Усі актори фільму "The First Star" (ПІБ акторів)
